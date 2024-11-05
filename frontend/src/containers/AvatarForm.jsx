@@ -14,7 +14,8 @@ const AvatarForm = () => {
   // (например, запросами к API) можно использовать хук useEffect.
   const [scenario, setScenario] = useState("");
   // Аналогично: onChange={(e) => setScenario(e.target.value)}
-
+  // Комментарий 23465
+  // Rj
   const handleSubmit = (e) => {
     e.preventDefault();
     // Предотвращение стандартных действий браузера
