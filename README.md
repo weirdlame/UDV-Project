@@ -1,3 +1,4 @@
+<a href="https://codeclimate.com/github/weirdlame/UDV-Project/maintainability"><img src="https://api.codeclimate.com/v1/badges/998012d0f5d501e2c813/maintainability" /></a>
 # Scenario-Based Avatar & Voice Generator
 
 This is a development of a system that uses artificial intelligence for automatic avatar generation and voice track synthesis based on user-provided text descriptions and scenarios. The product is aimed at automating video content creation for video hosting platforms and other media services.
