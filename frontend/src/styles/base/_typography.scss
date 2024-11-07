@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("./fonts/poppins-regular-webfont.woff2") format("woff2"),
+    url("./fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #495057;
+  line-height: 1.6;
+}

@@ -1,0 +1,14 @@
+// Импорт переменных и миксинов
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+// Импорт базовых стилей
+@import "base/reset";
+@import "base/typography";
+@import "base/global";
+
+// Импорт стилей компонентов
+@import "./components-styles/avatar-form";
+
+// Импорт Bootstrap для глобальных компонентов
+@import "~bootstrap/scss/bootstrap.scss";

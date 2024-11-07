@@ -1,7 +1,7 @@
-// src/containers/AvatarForm.js
 import React, { useState } from "react";
 import AvatarDescriptionInput from "../components/AvatarDescriptionInput";
 import ScenarioInput from "../components/ScenarioInput";
+import '../styles/main.scss';
 
 const AvatarForm = () => {
   const [description, setDescription] = useState("");
@@ -33,7 +33,7 @@ const AvatarForm = () => {
           setDescription={setDescription}
         />
         <ScenarioInput scenario={scenario} setScenario={setScenario} />
-        <button type="submit">Generate Avatar</button>
+        <button type="submit" className="btn">Generate Avatar</button>
       </form>
     </div>
   );

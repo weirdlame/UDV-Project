@@ -1,0 +1,88 @@
+.avatar-form {
+  max-width: $container-max-width;
+  height: $container-max-height;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .avatar-description-input,
+  .scenario-input {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .avatar-description-textarea,
+  .scenario-input-textarea {
+    resize: none;
+    width: 100%;
+    padding: $padding;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    font-size: $font-size-base;
+    @include transition(border-color, box-shadow);
+    max-height: 150px;
+    margin-bottom: 10px;
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      outline: none;
+    }
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    height: 50px;
+    padding: $padding;
+    background-color: $primary-color;
+    color: $button-text-color;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    @include transition(background-color, transform);
+
+    &:hover {
+      background-color: $primary-hover-color;
+      color: $button-text-color;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  .custom-textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    font-size: $font-size-base;
+    @include transition(border-color, box-shadow);
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 5px rgba(19, 176, 245, 0.5);
+    }
+  }
+}

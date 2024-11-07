@@ -1,10 +1,11 @@
 import React from "react";
-import "./App.css";
 import AvatarForm from "./containers/AvatarForm.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/main.scss'
 
 const App = () => {
   return (
-    <div className="container">
+    <div>
       <AvatarForm />
     </div>
   );
