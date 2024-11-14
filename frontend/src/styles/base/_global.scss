@@ -1,7 +1,15 @@
-body {
-  background: $gradient;
-  min-height: 100vh;
-  padding: 0 15px;
-  overflow-x: hidden;
-  @include center-flex;
+@font-face {
+  font-family: "Poppins";
+  src:
+    url("../fonts/poppins-regular-webfont.woff2") format("woff2"),
+    url("../fonts/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
