@@ -1,16 +1,21 @@
 // Цветовая палитра
-$primary-color: #007bff;
-$primary-hover-color: #0056b3;
+$primary-color: #A594F9;
+$primary-hover-color: #A594F9;
 $border-color: #ced4da;
-$button-text-color: white;
-$gradient: linear-gradient(90deg, #13b0f5, #e70faa);
+$gradient: linear-gradient(90deg, #E5D9F2, #A594F9);
 
 // Размеры и отступы
 $padding: 12px;
 $font-size-base: 1rem;
 $font-size-small: 14px;
-$border-radius: 10px;
 
-// Максимальные размеры контейнера
-$container-max-width: 60vw;
-$container-max-height: 90vh;
+// Параметры формы
+$form-width: 505px;
+$form-height: 561px;
+$form-aspect-ratio: $form-height / $form-width * 100%;
+$form-element-radius: 1.5rem;
+$form-text-color: #666666;
+$form-button-background-color: #A594F9;
+$form-button-text-color: white;
+$form-border-color: #A594F9;
+$form-border-input-color: #CED4DA;
