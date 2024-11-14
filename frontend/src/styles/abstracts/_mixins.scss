@@ -3,8 +3,3 @@
   justify-content: center;
   align-items: center;
 }
-
-// Миксин для плавных переходов
-@mixin transition($properties...) {
-  transition: $properties 0.3s ease;
-}

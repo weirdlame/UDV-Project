@@ -2,7 +2,9 @@ body {
   background: $gradient;
   min-height: 100vh;
   padding: 0 30px;
-  @include center-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: $form-text-color;
   overflow-x: hidden;
 }
@@ -29,6 +31,7 @@ body {
     text-align: center;
     margin-bottom: 1.5rem;
     font-size: 2rem;
+    transition: color 0.5s ease;
   }
 
   .avatar-description-input,
@@ -45,11 +48,8 @@ body {
     border-radius: $form-element-radius;
     border: 1px solid $form-border-input-color;
     font-size: $font-size-base;
-    @include transition($form-border-color, box-shadow);
+    transition: border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
     max-height: 150px;
-    transition:
-      background-color 0.3s ease,
-      border-color 0.3s ease;
 
     &:focus {
       border-color: $primary-color;
@@ -75,7 +75,7 @@ body {
     border-radius: $form-element-radius;
     font-size: 1.2rem;
     cursor: pointer;
-    @include transition(background-color 0.3s, color 0.3s, transform 0.3s);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 
     &:hover {
       background-color: $form-element-color;
@@ -101,7 +101,7 @@ body {
     border-radius: 10px;
     border: 1px solid $border-color;
     font-size: $font-size-base;
-    @include transition(border-color, box-shadow);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
 
     &:focus {
       border-color: $primary-color;
@@ -117,31 +117,30 @@ body {
     }
 
     .btn {
-      width: 80%; // Увеличиваем ширину кнопки на мобильных
-      font-size: 1rem; // Меньший размер шрифта на мобильных
+      width: 80%;
+      font-size: 1rem;
     }
 
     .avatar-description-textarea,
     .scenario-input-textarea {
-      max-height: 120px; // Уменьшаем высоту textarea
-      font-size: 0.9rem; // Меньший шрифт для мобильных
+      max-height: 120px;
+      font-size: 0.9rem;
     }
   }
 
-  // Адаптивный дизайн для маленьких мобильных устройств
   @media screen and (max-width: 480px) {
     h2 {
-      font-size: 1.3rem; // Ещё меньше шрифт заголовка
+      font-size: 1.3rem;
     }
 
     .avatar-description-textarea,
     .scenario-input-textarea {
-      font-size: 0.8rem; // Ещё меньший шрифт в textarea
+      font-size: 0.8rem;
     }
 
     .btn {
-      width: 90%; // Кнопка будет шире на маленьких экранах
-      height: 45px; // Уменьшаем высоту кнопки
+      width: 90%;
+      height: 45px;
     }
   }
 }
