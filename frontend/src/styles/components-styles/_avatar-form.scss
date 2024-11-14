@@ -49,7 +49,7 @@
   }
 
   .avatar-description-textarea {
-    border: none
+    border: none;
   }
 
   .btn {
@@ -96,6 +96,43 @@
     &:focus {
       border-color: $primary-color;
       box-shadow: 0 0 5px rgba(19, 176, 245, 0.5);
+    }
+  }
+
+  // Адаптивный дизайн для мобильных устройств
+  @media screen and (max-width: 768px) {
+    padding: 15px;
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .btn {
+      width: 80%; // Увеличиваем ширину кнопки на мобильных
+      font-size: 1rem; // Меньший размер шрифта на мобильных
+    }
+
+    .avatar-description-textarea,
+    .scenario-input-textarea {
+      max-height: 120px; // Уменьшаем высоту textarea
+      font-size: 0.9rem; // Меньший шрифт для мобильных
+    }
+  }
+
+  // Адаптивный дизайн для маленьких мобильных устройств
+  @media screen and (max-width: 480px) {
+    h2 {
+      font-size: 1.3rem; // Ещё меньше шрифт заголовка
+    }
+
+    .avatar-description-textarea,
+    .scenario-input-textarea {
+      font-size: 0.8rem; // Ещё меньший шрифт в textarea
+    }
+
+    .btn {
+      width: 90%; // Кнопка будет шире на маленьких экранах
+      height: 45px; // Уменьшаем высоту кнопки
     }
   }
 }
