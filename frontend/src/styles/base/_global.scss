@@ -2,5 +2,6 @@ body {
   background: $gradient;
   min-height: 100vh;
   padding: 0 15px;
+  overflow-x: hidden;
   @include center-flex;
 }
