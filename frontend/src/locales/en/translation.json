@@ -1,0 +1,10 @@
+{
+  "avatarForm": {
+    "title": "Create Your Avatar",
+    "descriptionLabel": "Select the desired avatar parameters:",
+    "descriptionPlaceholder": "Enter a description of your avatar...",
+    "scenarioLabel": "Enter the script spoken by the avatar:",
+    "scenarioPlaceholder": "Enter text...",
+    "submitButton": "Generate Avatar"
+  }
+}

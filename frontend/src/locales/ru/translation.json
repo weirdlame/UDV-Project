@@ -1,0 +1,10 @@
+{
+  "avatarForm": {
+    "title": "Создай своего аватара",
+    "descriptionLabel": "Выберите параметры желаемого аватара:",
+    "descriptionPlaceholder": "Введите описание вашего аватара...",
+    "scenarioLabel": "Введите сценарий, произносимый аватаром:",
+    "scenarioPlaceholder": "Введите текст...",
+    "submitButton": "Генерация аватара"
+  }
+}

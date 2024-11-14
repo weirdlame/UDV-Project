@@ -1,0 +1,101 @@
+.avatar-form {
+  width: 100%;
+  height: auto;
+  max-width: $form-width;
+  max-height: $form-height;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: $form-element-radius;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $form-text-color;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .avatar-description-input,
+  .scenario-input {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .avatar-description-textarea,
+  .scenario-input-textarea {
+    resize: none;
+    width: 100%;
+    padding: $padding;
+    border-radius: $form-element-radius;
+    border: 1px solid $form-border-input-color;
+    font-size: $font-size-base;
+    @include transition($form-border-color, box-shadow);
+    max-height: 150px;
+    margin-bottom: 10px;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 5px $form-border-color;
+      outline: none;
+    }
+  }
+
+  .avatar-description-textarea {
+    border: none
+  }
+
+  .btn {
+    outline: none;
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    height: 50px;
+    padding: $padding;
+    background-color: $form-button-background-color;
+    color: $form-button-text-color;
+    border: none;
+    border-radius: $form-element-radius;
+    font-size: 1.2rem;
+    cursor: pointer;
+    @include transition(background-color 0.3s, color 0.3s, transform 0.3s);
+
+    &:hover {
+      background-color: $form-button-text-color;
+      color: $form-button-background-color;
+      border: 1px solid $form-button-background-color;
+    }
+
+    &:active {
+      background-color: darken($form-button-text-color, 10%);
+      color: lighten($form-button-background-color, 10%);
+      transform: scale(0.98);
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  .custom-textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    font-size: $font-size-base;
+    @include transition(border-color, box-shadow);
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 5px rgba(19, 176, 245, 0.5);
+    }
+  }
+}
