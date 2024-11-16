@@ -5,7 +5,8 @@
     "descriptionPlaceholder": "Enter a description of your avatar...",
     "scenarioLabel": "Enter the script spoken by the avatar:",
     "scenarioPlaceholder": "Enter text...",
-    "submitButton": "Generate Avatar"
+    "submitButton": "Generate Avatar",
+    "loadingButton": "Loading"
   },
   "navBar": {
     "menu": "Home",

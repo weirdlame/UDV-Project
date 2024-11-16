@@ -5,7 +5,8 @@
     "descriptionPlaceholder": "Введите описание вашего аватара...",
     "scenarioLabel": "Введите сценарий, произносимый аватаром:",
     "scenarioPlaceholder": "Введите текст...",
-    "submitButton": "Генерация аватара"
+    "submitButton": "Генерация аватара",
+    "loadingButton": "Загрузка"
   },
   "navBar": {
     "menu": "Главная",

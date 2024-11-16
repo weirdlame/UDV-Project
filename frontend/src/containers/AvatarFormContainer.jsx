@@ -4,12 +4,13 @@ import ScenarioInput from "../components/ScenarioInput.jsx";
 import { useTranslation } from "react-i18next";
 import "../styles/main.scss";
 import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"; // Подключаем Bootstrap если не подключен
 
 const AvatarFormContainer = () => {
   const [description, setDescription] = useState("");
   const [scenario, setScenario] = useState("");
   const [loading, setLoading] = useState(false);
-  const [videoUrl, setVideoUrl] = useState(null); // Для хранения ссылки на видео
+  const [videoUrl, setVideoUrl] = useState(null);
 
   const navigate = useNavigate();
 
@@ -33,7 +34,7 @@ const AvatarFormContainer = () => {
     } catch (error) {
       setLoading(false); // Снимаем состояние загрузки
       console.error("Ошибка при отправке запроса:", error);
-      alert("avatarForm.errorMessage"); // Используйте t() для перевода сообщения об ошибке
+      alert("avatarForm.errorMessage");
     }
   };
 
@@ -47,7 +48,7 @@ const AvatarFormContainer = () => {
         handleSubmit={handleSubmit}
         loading={loading}
         videoUrl={videoUrl}
-        goToCreateAvatar={() => navigate("/avatar-creation")} // Передаем функцию для перехода
+        goToCreateAvatar={() => navigate("/avatar-creation")}
       />
     </div>
   );
@@ -76,13 +77,22 @@ const AvatarForm = ({
         <ScenarioInput scenario={scenario} setScenario={setScenario} />
         <button
           type="submit"
-          className="btn"
+          className={`btn ${loading ? "btn-loading" : "btn-primary"}`}
           disabled={loading}
           onClick={goToCreateAvatar}
         >
-          {loading
-            ? t("avatarForm.loadingButton")
-            : t("avatarForm.submitButton")}
+          {loading ? (
+            <>
+              <span
+                className="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              <span>{t("avatarForm.loadingButton")}</span>
+            </>
+          ) : (
+            t("avatarForm.submitButton")
+          )}
         </button>
       </form>
 
