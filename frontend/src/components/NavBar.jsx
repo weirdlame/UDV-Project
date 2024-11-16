@@ -8,14 +8,14 @@ const NavBar = ({ isMenuOpen, viewportType, onToggleMenu }) => {
   const { t } = useTranslation(); // Подключение перевода
 
   return (
-    <section>
+    <header className="header">
       {/* Кнопка меню для мобильных устройств */}
       <button
         id="menu-icon"
         className={cn({ active: isMenuOpen })}
         onClick={onToggleMenu}
       >
-        <i className="bx bx-menu"></i>
+        <i className={isMenuOpen ? "bx bx-x" : "bx bx-menu"}></i>
       </button>
 
       {/* Навигация */}
@@ -36,7 +36,7 @@ const NavBar = ({ isMenuOpen, viewportType, onToggleMenu }) => {
           {t("navBar.downloadAvatar")}
         </Link>
       </nav>
-    </section>
+    </header>
   );
 };
 

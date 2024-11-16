@@ -2,80 +2,122 @@
   display: none;
 }
 
-nav.desktop-menu {
-  @include center-flex;
-  background-color: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый */
-  backdrop-filter: blur(10px); /* Эффект размытия фона */
-  box-shadow: $nav-shadow;
+header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.7rem 0;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: $nav-shadow;
   z-index: 1000;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 
+  /* Центрирование ссылок */
   a {
-    color: $nav-element-color;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    font-size: 1.2rem;
-    margin: 0 3rem;
+    font-size: 1.1rem;
+    margin: 0 1.5rem;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition:
-      background-color 0.3s,
-      transform 0.2s;
+      background-color 0.3s ease,
+      transform 0.2s ease,
+      color 0.3s ease,
+      backdrop-filter 0.3s ease;
+
+    /* Тень для текста */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   a:hover {
-    background-color: $nav-hover-color;
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.15
+    ); /* Сохраняем стеклянный эффект */
+    backdrop-filter: blur(15px);
+    transform: scale(1.05);
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 50%;
+    padding: 1rem 3%;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom-left-radius: 2rem;
+    border-left: 2px solid #0fe;
+    border-bottom: 2px solid #0fe;
+    display: none;
+    z-index: 10;
+  }
+  .navbar.active {
+    display: block;
+  }
+  .navbar a {
+    display: block;
+    font-size: 2rem;
+    margin: 3rem 0;
+    color: white;
   }
 }
 
-/* Медиа-запрос для мобильных устройств */
+/* Стили для адаптивности */
 @media (max-width: 768px) {
   nav.desktop-menu {
-    display: none;
+    display: none; /* Скрытие десктопного меню на мобильных устройствах */
   }
 
-  /* Стиль для мобильного меню */
   nav.mobile-menu {
     display: none; /* Скрыто по умолчанию */
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
-    width: 250px; /* Ширина выпадающего меню */
-    background: rgba(0, 0, 0, 0.7); /* Прозрачный черный фон */
-    border-radius: 0 0 0 2rem;
-    border-left: 2px solid $primary-color;
-    border-bottom: 2px solid $primary-color;
-    z-index: 10;
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
-    padding: 1rem;
+    width: 70%; /* Более удобная ширина для мобильных устройств */
+    height: 100vh;
+    background: $nav-background-primary; /* Темный фон */
+    z-index: 1001;
+    padding: 5rem 0;
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* Выравнивание ссылок слева */
+    transform: translateX(100%); /* Начальное положение вне экрана */
+    transition: transform 0.3s ease-in-out;
 
     &.open {
-      display: flex; /* Меню появляется, когда оно открыто */
-      transform: translateX(0); /* Открытие меню справа */
-      opacity: 1;
-    }
-
-    &.closed {
-      transform: translateX(100%); /* Скрыть меню */
-      opacity: 0;
+      transform: translateX(0); /* Меню выезжает */
     }
 
     a {
-      color: white;
-      padding: 1rem;
-      font-size: 1.2rem;
-      text-align: right;
-      text-decoration: none;
-      transition: background-color 0.3s;
+      color: rgba(255, 255, 255, 0.9); /* Яркий текст */
+      padding: 1rem 2rem;
+      font-size: 1.5rem; /* Увеличен размер текста для мобильных */
+      width: 100%; /* Растянуть ссылки на всю ширину */
+      text-align: left; /* Текст выравнивается по левому краю */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Линия под ссылкой */
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 
       &:hover {
-        background-color: $nav-hover-color;
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.2
+        ); /* Сохраняем эффект стекла */
+        color: rgba(255, 255, 255, 1); /* Яркий текст */
       }
     }
   }
@@ -83,11 +125,17 @@ nav.desktop-menu {
   #menu-icon {
     display: block;
     position: relative;
+    left: 10rem;
     font-size: 2rem;
-    color: white;
+    color: rgba(255, 255, 255, 0.9); /* Контрастный текст */
     background: transparent;
     border: none;
     cursor: pointer;
     z-index: 1010;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: rgba(255, 255, 255, 1); /* Яркий текст при наведении */
+    }
   }
 }
