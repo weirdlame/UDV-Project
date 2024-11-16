@@ -6,5 +6,10 @@
     "scenarioLabel": "Enter the script spoken by the avatar:",
     "scenarioPlaceholder": "Enter text...",
     "submitButton": "Generate Avatar"
+  },
+  "navBar": {
+    "menu": "Home",
+    "createAvatar": "Create Avatar",
+    "downloadAvatar": "Your Avatar"
   }
 }

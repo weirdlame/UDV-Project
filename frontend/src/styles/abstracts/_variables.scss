@@ -1,8 +1,8 @@
 // Цветовая палитра
-$primary-color: #A594F9;
-$primary-hover-color: #A594F9;
+$primary-color: #a594f9;
+$primary-hover-color: #a594f9;
 $border-color: #ced4da;
-$gradient: linear-gradient(90deg, #E5D9F2, #A594F9);
+$gradient: linear-gradient(90deg, #e5d9f2, #a594f9);
 
 // Размеры и отступы
 $padding: 12px;
@@ -15,7 +15,13 @@ $form-height: 630px;
 $form-aspect-ratio: $form-height / $form-width * 100%;
 $form-element-radius: 1.5rem;
 $form-text-color: #666666;
-$form-button-background-color: #A594F9;
+$form-button-background-color: #a594f9;
 $form-element-color: white;
-$form-border-color: #A594F9;
-$form-border-input-color: #CED4DA;
+$form-border-color: #a594f9;
+$form-border-input-color: #ced4da;
+
+// Параметры меню
+$nav-element-color: white;
+$nav-hover-color: #b7a9fd;
+$nav-shadow: rgba(255, 255, 255, 0.2);
+$nav-background-color: rgba(255, 255, 255, 0.2);

@@ -1,0 +1,93 @@
+#menu-icon {
+  display: none;
+}
+
+nav.desktop-menu {
+  @include center-flex;
+  background-color: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый */
+  backdrop-filter: blur(10px); /* Эффект размытия фона */
+  box-shadow: $nav-shadow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  a {
+    color: $nav-element-color;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin: 0 3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition:
+      background-color 0.3s,
+      transform 0.2s;
+  }
+
+  a:hover {
+    background-color: $nav-hover-color;
+  }
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+  nav.desktop-menu {
+    display: none;
+  }
+
+  /* Стиль для мобильного меню */
+  nav.mobile-menu {
+    display: none; /* Скрыто по умолчанию */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px; /* Ширина выпадающего меню */
+    background: rgba(0, 0, 0, 0.7); /* Прозрачный черный фон */
+    border-radius: 0 0 0 2rem;
+    border-left: 2px solid $primary-color;
+    border-bottom: 2px solid $primary-color;
+    z-index: 10;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    &.open {
+      display: flex; /* Меню появляется, когда оно открыто */
+      transform: translateX(0); /* Открытие меню справа */
+      opacity: 1;
+    }
+
+    &.closed {
+      transform: translateX(100%); /* Скрыть меню */
+      opacity: 0;
+    }
+
+    a {
+      color: white;
+      padding: 1rem;
+      font-size: 1.2rem;
+      text-align: right;
+      text-decoration: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $nav-hover-color;
+      }
+    }
+  }
+
+  #menu-icon {
+    display: block;
+    position: relative;
+    font-size: 2rem;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+  }
+}
