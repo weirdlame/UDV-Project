@@ -1,11 +1,11 @@
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-
+import routes from "../routes/routes";
 const WelcomePage = () => {
   const navigate = useNavigate();
 
   const goToCreateAvatar = () => {
-    navigate("/avatar-creation");
+    navigate(routes.avatarCreation);
   };
 
   return (

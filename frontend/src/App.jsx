@@ -1,28 +1,18 @@
-// Библиотеки
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-// Стили
-import "./styles/main.scss";
-
-// Страницы
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import routes from "./routes/routes.js";
 import WelcomePage from "./pages/WelcomePage.jsx";
 import AvatarCreationPage from "./pages/AvatarCreationPage.jsx";
-import PaymentPage from "./pages/PaymentPage.jsx";
 import DownloadPage from "./pages/DownloadPage.jsx";
-
-// Компоненты
-import NavBarContainer from "./containers/NavBarContainer.jsx"; // Исправленный импорт
+import NavBarContainer from "./containers/NavBarContainer.jsx";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <NavBarContainer /> {/* Используем компонент NavBar */}
+      <NavBarContainer />
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/avatar-creation" element={<AvatarCreationPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/download-avatar" element={<DownloadPage />} />
+        <Route path={routes.welcome} element={<WelcomePage />} />
+        <Route path={routes.avatarCreation} element={<AvatarCreationPage />} />
+        <Route path={routes.downloadAvatar} element={<DownloadPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
