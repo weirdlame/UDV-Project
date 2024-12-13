@@ -12,5 +12,16 @@
     "menu": "Home",
     "createAvatar": "Create Avatar",
     "downloadAvatar": "Your Avatar"
+  },
+  "welcome-page": {
+    "title": "Create your unique avatar in just a few clicks!",
+    "instruction": {
+      "step1": "Step 1. Go to the generation page and select your desired parameters.",
+      "step2": "Step 2. Download the resulting video."
+    },
+    "buttons": {
+      "button-sign-up": "Sign up",
+      "button-log-in": "Log in"
+    }
   }
 }

@@ -1,20 +1,28 @@
-body {
-  background: $gradient;
-  min-height: 100vh;
-  padding: 0 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: $form-text-color;
-  overflow-x: hidden;
-  padding-top: 25px;
-}
+// Цветовая палитра
+$primary-color: #a594f9;
+$primary-hover-color: #a594f9;
+$border-color: #ced4da;
+$gradient: linear-gradient(90deg, #e5d9f2, #a594f9);
+
+// Размеры и отступы
+$padding: 12px;
+$font-size-base: 1rem;
+$font-size-small: 14px; // Параметры формы
+$form-width: 100%;
+$form-max-width: 505px;
+$form-height: auto;
+$form-aspect-ratio: 1.25;
+$form-element-radius: 1.5rem;
+$form-text-color: #666666;
+$form-button-background-color: #a594f9;
+$form-button-disabled-color: #675d9c;
+$form-element-color: white;
+$form-border-color: #a594f9;
+$form-border-input-color: #ced4da;
 
 .avatar-form {
   width: 100%;
-  height: auto;
-  max-width: $form-width;
-  max-height: $form-height;
+  max-width: $form-max-width;
   margin: 40px auto;
   padding: 20px;
   border-radius: $form-element-radius;
@@ -26,15 +34,15 @@ body {
   align-items: center;
   color: $form-text-color;
 
-  h2 {
-    margin-top: 3rem;
-    padding-bottom: 1rem;
+  // Заголовок
+  .title {
+    padding-bottom: 2rem;
     text-align: center;
-    margin-bottom: 1.5rem;
     font-size: 2rem;
     transition: color 0.5s ease;
   }
 
+  // Форматирование всех полей ввода и текстовых областей
   .avatar-description-input,
   .scenario-input {
     margin-bottom: 15px;
@@ -67,7 +75,12 @@ body {
     margin-bottom: 10px;
   }
 
-  .btn {
+  .scenario-input-textarea {
+    margin-bottom: 26px;
+  }
+
+  // Кнопки формы
+  .form-btn {
     outline: none;
     display: block;
     margin: 0 auto;
@@ -78,6 +91,7 @@ body {
     border: none;
     border-radius: $form-element-radius;
     font-size: 1.2rem;
+    margin-bottom: 33px;
     cursor: pointer;
     transition:
       background-color 0.3s ease,
@@ -97,6 +111,7 @@ body {
     }
   }
 
+  // Состояние кнопки загрузки
   .btn-loading {
     padding: 10px;
     background-color: #6c757d;
@@ -105,11 +120,13 @@ body {
     opacity: 0.65;
   }
 
+  // Группы форм
   .form-group {
     margin-bottom: 1.5rem;
     width: 100%;
   }
 
+  // Стили для кастомных текстовых полей
   .custom-textarea {
     width: 100%;
     padding: 12px;
@@ -123,6 +140,20 @@ body {
     &:focus {
       border-color: $primary-color;
       box-shadow: 0 0 5px rgba(19, 176, 245, 0.5);
+    }
+  }
+
+  // Медиазапросы для разных размеров экранов
+  @media screen and (max-width: 1024px) {
+    padding: 20px;
+
+    .form-btn {
+      width: 70%;
+    }
+
+    .avatar-description-textarea,
+    .scenario-input-textarea {
+      max-height: 120px;
     }
   }
 
@@ -146,6 +177,8 @@ body {
   }
 
   @media screen and (max-width: 480px) {
+    padding: 10px;
+
     h2 {
       font-size: 1.3rem;
     }

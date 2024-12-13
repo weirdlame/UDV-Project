@@ -1,0 +1,14 @@
+svg {
+  display: none;
+}
+
+.welcome-page {
+  background: (radial-gradient(50% 50% at 50% 50%, #f5f1fa 0%, #fff 100%));
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  position: relative;
+}

@@ -1,0 +1,17 @@
+$primary-color: #a594f9;
+$primary-hover-color: #a594f9;
+$border-color: #ced4da;
+$gradient: linear-gradient(90deg, #e5d9f2, #a594f9);
+$form-text-color: #666666;
+
+.avatar-page {
+  background: $gradient;
+  min-height: 100vh;
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $form-text-color;
+  overflow-x: hidden;
+  padding-top: 25px;
+}

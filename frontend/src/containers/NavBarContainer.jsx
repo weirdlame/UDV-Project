@@ -13,7 +13,7 @@ const NavBarContainer = () => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setViewportType("mobile");
-        setIsMenuOpen(false); // Скрываем меню при смене устройства
+        if (isMenuOpen) setIsMenuOpen(false);
       } else {
         setViewportType("desktop");
         setIsMenuOpen(false); // Скрываем меню на десктопе

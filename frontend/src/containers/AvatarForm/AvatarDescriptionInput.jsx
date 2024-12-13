@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import styles from "./AvatarForm.module.scss";
 
 const AvatarDescriptionInput = ({ description, setDescription }) => {
   const { t } = useTranslation();
@@ -9,7 +10,7 @@ const AvatarDescriptionInput = ({ description, setDescription }) => {
       <label htmlFor="description">{t("avatarForm.descriptionLabel")}</label>
       <textarea
         id="description"
-        className="avatar-description-textarea"
+        className={styles["avatar-description-textarea"]}
         value={description}
         onChange={(e) => {
           setDescription(e.target.value);

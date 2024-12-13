@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import styles from "./AvatarForm.module.scss";
 
 const ScenarioInput = ({ scenario, setScenario }) => {
   const { t } = useTranslation();
@@ -10,7 +11,7 @@ const ScenarioInput = ({ scenario, setScenario }) => {
       <br />
       <textarea
         id="scenario"
-        className="scenario-input-textarea"
+        className={styles["scenario-input-textarea"]}
         value={scenario}
         onChange={(e) => setScenario(e.target.value)}
         placeholder={t("avatarForm.scenarioPlaceholder")}

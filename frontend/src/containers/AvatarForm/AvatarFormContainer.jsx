@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import AvatarDescriptionInput from "../components/AvatarDescriptionInput.jsx";
-import ScenarioInput from "../components/ScenarioInput.jsx";
+import AvatarDescriptionInput from "./AvatarDescriptionInput.jsx";
+import ScenarioInput from "./ScenarioInput.jsx";
 import { useTranslation } from "react-i18next";
-import "../styles/main.scss";
+import styles from "./AvatarForm.module.scss";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; // Подключаем Bootstrap если не подключен
 
@@ -67,17 +67,22 @@ const AvatarForm = ({
   const { t } = useTranslation();
 
   return (
-    <div className="avatar-form">
-      <h2>{t("avatarForm.title")}</h2>
+    <div className={styles["avatar-form"]}>
+      <h2 className={styles.title}>{t("avatarForm.title")}</h2>
       <form onSubmit={handleSubmit}>
         <AvatarDescriptionInput
           description={description}
           setDescription={setDescription}
+          className={"avatar-description-input"}
         />
-        <ScenarioInput scenario={scenario} setScenario={setScenario} />
+        <ScenarioInput
+          scenario={scenario}
+          setScenario={setScenario}
+          className={"scenario-input"}
+        />
         <button
           type="submit"
-          className={`btn ${loading ? "btn-loading" : "btn-primary"}`}
+          className={`${styles["form-btn"]} ${loading ? "btn-loading" : "btn-primary"}`}
           disabled={loading}
           onClick={goToCreateAvatar}
         >

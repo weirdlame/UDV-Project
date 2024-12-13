@@ -1,0 +1,45 @@
+.instruction-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 8%;
+  position: relative;
+
+  .step1,
+  .step2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    bottom: 20px;
+    width: 100%;
+    max-width: 385px;
+    height: 100%;
+    aspect-ratio: 385 / 265; // поддержание соотношения сторон
+    flex-grow: 1; // растягиваем равномерно
+  }
+
+  .step2 {
+    margin-bottom: 20px;
+  }
+
+  .step {
+    position: relative;
+    top: 10px;
+  }
+
+  .title {
+    margin-top: 20px;
+    color: #000;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
