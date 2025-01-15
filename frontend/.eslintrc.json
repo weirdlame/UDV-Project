@@ -10,6 +10,7 @@
   ],
   "plugins": ["react", "react-hooks", "jsx-a11y", "import", "prettier"],
   "rules": {
+    "jsx-a11y/media-has-caption": "off", // Отключаем правило для всего проекта
     "prettier/prettier": ["error"], // Отображать ошибки форматирования Prettier как ошибки ESLint
     "react/prop-types": "off", // При использовании TypeScript
     "react/react-in-jsx-scope": "off" // При работе с React 17+

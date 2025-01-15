@@ -1,57 +1,60 @@
 // Цветовая палитра
-$primary-color: #a594f9;
-$primary-hover-color: #a594f9;
-$border-color: #ced4da;
-$gradient: linear-gradient(90deg, #e5d9f2, #a594f9);
+$primary-color: #a594f9; // Основной цвет
+$primary-hover-color: #a594f9; // Цвет при наведении на основной элемент
+$border-color: #ced4da; // Цвет рамки
+$gradient: linear-gradient(90deg, #e5d9f2, #a594f9); // Градиент для фона
 
 // Размеры и отступы
-$padding: 12px;
-$font-size-base: 1rem;
-$font-size-small: 14px; // Параметры формы
-$form-width: 100%;
-$form-max-width: 505px;
-$form-height: auto;
-$form-aspect-ratio: 1.25;
-$form-element-radius: 1.5rem;
-$form-text-color: #666666;
-$form-button-background-color: #a594f9;
-$form-button-disabled-color: #675d9c;
-$form-element-color: white;
-$form-border-color: #a594f9;
-$form-border-input-color: #ced4da;
+$padding: 12px; // Общие отступы
+$font-size-base: 1rem; // Базовый размер шрифта
+$font-size-small: 14px; // Маленький размер шрифта
+$form-width: 100%; // Ширина формы
+$form-max-width: 505px; // Максимальная ширина формы
+$form-height: auto; // Высота формы
+$form-aspect-ratio: 1.25; // Пропорции формы
+$form-element-radius: 1.5rem; // Радиус скругления элементов формы
+$form-text-color: #666666; // Цвет текста формы
+$form-button-background-color: #a594f9; // Фоновый цвет кнопки формы
+$form-button-disabled-color: #675d9c; // Цвет кнопки в неактивном состоянии
+$form-element-color: white; // Цвет элементов формы
+$form-border-color: #a594f9; // Цвет рамки элементов формы
+$form-border-input-color: #ced4da; // Цвет рамки ввода
 
+// Основной стиль формы
 .avatar-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  height: 80vh;
   max-width: $form-max-width;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 3px auto;
+  padding: 10px;
   border-radius: $form-element-radius;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   background-color: $form-element-color;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: $form-text-color;
 
-  // Заголовок
+  // Заголовок формы
   .title {
-    padding-bottom: 2rem;
+    position: relative;
+    top: 5px;
+    padding-bottom: 3rem;
     text-align: center;
     font-size: 2rem;
-    transition: color 0.5s ease;
+    transition: color 0.5s ease; // Плавный переход цвета заголовка
   }
 
-  // Форматирование всех полей ввода и текстовых областей
-  .avatar-description-input,
+  // Стиль для текстовых полей формы
   .scenario-input {
     margin-bottom: 15px;
     width: 100%;
   }
 
-  .avatar-description-textarea,
+  // Стили для многострочного текстового поля
   .scenario-input-textarea {
-    resize: none;
+    resize: none; // Отключение возможности изменения размера
     width: 100%;
     padding: $padding;
     border-radius: $form-element-radius;
@@ -61,8 +64,9 @@ $form-border-input-color: #ced4da;
       border-color 0.4s ease,
       background-color 0.4s ease,
       box-shadow 0.4s ease;
-    max-height: 150px;
+    max-height: 150px; // Ограничение высоты поля
 
+    // Стили при фокусе на текстовом поле
     &:focus {
       border-color: $primary-color;
       box-shadow: 0 0 5px $form-border-color;
@@ -70,16 +74,55 @@ $form-border-input-color: #ced4da;
     }
   }
 
-  .avatar-description-textarea {
-    border: none;
-    margin-bottom: 10px;
+  // Блок с описанием выбора пола
+  .avatar-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .gender-options {
+      display: flex;
+      align-items: center;
+    }
+
+    // Стили для текста метки
+    label {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    // Стиль для контейнера с кнопками выбора пола
+    .gender-options {
+      display: flex;
+      gap: 10px;
+    }
   }
 
-  .scenario-input-textarea {
-    margin-bottom: 26px;
+  // Стили для кнопок выбора пола
+  .genderButton {
+    outline: none;
+    width: 6rem;
+    background-color: $form-element-color;
+    color: $form-button-background-color;
+    border: 1px solid $form-button-background-color;
+    border-radius: $form-element-radius;
+    padding: 1rem;
+    cursor: pointer;
+    transition:
+      background-color 0.3s,
+      border-color 0.3s,
+      color 0.3s;
+
+    // Стили для выбранной кнопки
+    &.selected {
+      background-color: $form-border-color; // Цвет для выбранной кнопки
+      color: white;
+    }
   }
 
-  // Кнопки формы
+  // Стили для кнопки отправки формы
   .form-btn {
     outline: none;
     display: block;
@@ -98,12 +141,14 @@ $form-border-input-color: #ced4da;
       color 0.3s ease,
       transform 0.3s ease;
 
+    // Стили при наведении на кнопку
     &:hover {
       background-color: $form-element-color;
       color: $form-button-background-color;
       border: 1px solid $form-button-background-color;
     }
 
+    // Стили при активном нажатии на кнопку
     &:active {
       background-color: darken($form-element-color, 10%);
       color: lighten($form-button-background-color, 10%);
@@ -111,7 +156,7 @@ $form-border-input-color: #ced4da;
     }
   }
 
-  // Состояние кнопки загрузки
+  // Стиль для кнопки с состоянием загрузки
   .btn-loading {
     padding: 10px;
     background-color: #6c757d;
@@ -120,13 +165,13 @@ $form-border-input-color: #ced4da;
     opacity: 0.65;
   }
 
-  // Группы форм
+  // Стили для группы элементов формы
   .form-group {
     margin-bottom: 1.5rem;
     width: 100%;
   }
 
-  // Стили для кастомных текстовых полей
+  // Кастомные стили для текстовых полей
   .custom-textarea {
     width: 100%;
     padding: 12px;
@@ -137,13 +182,14 @@ $form-border-input-color: #ced4da;
       border-color 0.4s ease,
       box-shadow 0.4s ease;
 
+    // Стили при фокусе на текстовом поле
     &:focus {
       border-color: $primary-color;
       box-shadow: 0 0 5px rgba(19, 176, 245, 0.5);
     }
   }
 
-  // Медиазапросы для разных размеров экранов
+  // Медиазапросы для различных размеров экрана
   @media screen and (max-width: 1024px) {
     padding: 20px;
 

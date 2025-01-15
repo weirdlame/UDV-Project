@@ -1,0 +1,83 @@
+// Цветовая палитра
+$color-primary: #a594f9; // Основной цвет
+$color-primary-hover: #a594f9; // Цвет при наведении на основной элемент
+$color-border: #ced4da; // Цвет рамки
+$color-background: #dcd5fd; // Цвет фона страницы
+$color-text: #666666; // Цвет текста 
+$color-text-second: rgb(240, 240, 240);
+$color-text-light: white; // Светлый цвет текста (для кнопок)
+$color-button-background: #a594f9; // Фоновый цвет кнопки
+$color-button-hover: #8170d8; // Цвет кнопки в неактивном состоянии
+$element-radius: 1.5rem; // Радиус скругления элементов формы
+
+.downloadPage {
+  display: flex;
+  justify-content: center; // Горизонтальное центрирование
+  align-items: center; // Вертикальное центрирование
+  background-color: $color-background;
+  width: 100%;
+  height: 100vh; // Занимает всю высоту экрана
+  color: $color-text;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.contentWrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 50vw;
+  height: 80vh;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.unavailableText {
+  font-size: 1.5rem;
+  color: $color-primary;
+  font-weight: bold;
+}
+
+.downloadButton {
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto;
+  width: 60%;
+  height: 50px;
+  background-color: $color-button-background;
+  color: $color-text-light;
+  border: none;
+  border-radius: $element-radius;
+  font-size: 1.2rem;
+  margin-bottom: 33px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+
+  // Стили при наведении на кнопку
+  &:hover {
+    background-color: $color-button-hover;
+    color: $color-text-second;
+    border: 1px solid $color-button-background;
+  }
+
+  // Стили при активном нажатии на кнопку
+  &:active {
+    background-color: darken($color-text-light, 10%);
+    color: lighten($color-button-background, 10%);
+    transform: scale(0.98);
+  }
+}

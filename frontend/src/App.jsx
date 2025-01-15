@@ -1,31 +1,45 @@
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import routes from "./routes/routes.js";
 import WelcomePage from "./pages/WelcomePage/WelcomePage.jsx";
 import AvatarCreationPage from "./pages/AvatarCreationPage/AvatarCreationPage.jsx";
-import DownloadPage from "./pages/DownloadPage.jsx";
+import DownloadPage from "./pages/DownloadPage/DownloadPage.jsx";
 import NavBarContainer from "./containers/NavBarContainer.jsx";
+import NotFound from "./pages/notFound/notFound.jsx";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path={routes.welcome} element={<WelcomePage />} />
-        <Route path={routes.avatarCreation} element={<AvatarCreationPage />} />
-        <Route path={routes.downloadAvatar} element={<DownloadPage />} />
-      </Routes>
-      <NavBarContainerWithVisibility />
+      <MainLayout />
     </BrowserRouter>
   );
 };
 
-// Компонент для отображения NavBarContainer только на нужных страницах
-const NavBarContainerWithVisibility = () => {
-  const location = useLocation(); // Хук для получения текущего маршрута
+const MainLayout = () => {
+  const location = useLocation();
 
-  // Cкрываем меню на странице WelcomePage
-  if (location.pathname === routes.welcome) return null;
+  const hideNavBarPages = [routes.welcome, routes.notFound];
+  const shouldHideNavBar = hideNavBarPages.includes(location.pathname);
 
-  return <NavBarContainer />;
+  return (
+    <>
+      {!shouldHideNavBar && <NavBarContainer />}
+      <Routes>
+        <Route path={routes.welcome} element={<WelcomePage />} />
+        <Route path={routes.avatarCreation} element={<AvatarCreationPage />} />
+        <Route path={routes.downloadAvatar} element={<DownloadPage />} />
+        <Route path={routes.notFound} element={<NotFound />} />
+        <Route path="*" element={<Navigate to={routes.notFound} />} />
+      </Routes>
+      <ToastContainer />
+    </>
+  );
 };
 
 export default App;

@@ -26,7 +26,7 @@ const NavBarContainer = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   return (
     <NavBar

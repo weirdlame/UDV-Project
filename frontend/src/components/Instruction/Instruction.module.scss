@@ -42,4 +42,11 @@
     font-weight: 500;
     line-height: 21px;
   }
+
+  .step1Image,
+  .step2Img {
+    will-change: transform, opacity;
+    width: 100%;
+    height: auto;
+  }
 }
