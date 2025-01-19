@@ -4,12 +4,11 @@ import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import cn from "classnames";
 import styles from "../AuthForm/AuthForm.module.scss";
-import { useDispatch } from "react-redux";
-import { login } from "../../store/slices/authSlice"; // Импортируем экшен loginUser
 import { useNavigate } from "react-router-dom"; // Импортируем useNavigate
 import routes from "../../routes/routes.js";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify"; // Импортируем toast
+import { loginUser } from "../../firebase/authService.js"; // Импортируем функцию регистрации
 
 const loginSchema = yup.object().shape({
   email: yup.string().email("Некорректный email").required("Обязательное поле"),
@@ -18,35 +17,31 @@ const loginSchema = yup.object().shape({
 
 const AuthModal = ({ showModal, handleClose }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
     try {
       console.log("Отправка данных для авторизации:", values); // Логируем данные
-      const result = await dispatch(
-        login({ email: values.email, password: values.password }),
-      );
+      const result = await loginUser(values.email, values.password); // Используем функцию loginUser
 
       console.log("Результат авторизации:", result); // Логируем результат
 
-      if (result.type === "auth/loginUser/fulfilled") {
+      if (result?.user) {
         console.log("Успешный вход!");
         navigate(routes.avatarCreation);
         handleClose();
       } else {
         console.log("Ошибка входа");
-        toast.error(t("errors.authError")),
-          {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          };
+        toast.error(t("errors.authError"), {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (e) {
       console.error("Ошибка при авторизации:", e);

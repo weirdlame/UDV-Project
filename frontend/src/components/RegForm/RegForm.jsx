@@ -4,12 +4,11 @@ import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import cn from "classnames";
 import styles from "../RegForm/RegForm.module.scss";
-import { useDispatch } from "react-redux";
-import { registrationUser } from "../../store/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import routes from "../../routes/routes.js";
 import { toast } from "react-toastify"; // Импортируем toast
+import { registerUser } from "../../firebase/authService.js"; // Импортируем функцию регистрации
 
 // Схема валидации через yup
 const registrationSchema = yup.object().shape({
@@ -26,27 +25,24 @@ const registrationSchema = yup.object().shape({
 
 const RegistrationModal = ({ showModal, handleClose }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      await dispatch(
-        registrationUser({ email: values.email, password: values.password }),
-      ).unwrap();
+      // Регистрируем пользователя через Firebase
+      await registerUser(values.email, values.password);
 
+      // Если регистрация успешна, переходим на страницу создания аватара
       navigate(routes.avatarCreation);
       handleClose();
     } catch (error) {
       toast.error(t("errors.regError"));
-
-      if (error.request) {
-        toast.error("📡 Нет ответа от сервера. Проверьте интернет-соединение.");
-      }
+      toast.error(`❌ Ошибка: ${error.message}`);
     } finally {
       setSubmitting(false);
     }
   };
+
   return (
     <Modal
       show={showModal}

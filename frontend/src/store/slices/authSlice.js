@@ -1,41 +1,53 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import AuthService from "../../services/AuthService.js";
+import firebase from "../../firebase/firebase.js"; // Импортируем файл с настройкой Firebase
 
-export const login = createAsyncThunk(
-  "auth/loginUser",
-  async ({ email, password }, { rejectWithValue }) => {
-    try {
-      const response = await AuthService.login(email, password);
-      localStorage.setItem("token", response.data.accessToken);
-      return { user: response.data.user }; // Возвращаем объект с пользователем
-    } catch (e) {
-      return rejectWithValue(e.response?.data?.message || "Ошибка авторизации");
-    }
-  },
-);
-
+// Регистрация пользователя с использованием Firebase
 export const registrationUser = createAsyncThunk(
   "auth/registrationUser",
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await AuthService.registration(email, password);
-      localStorage.setItem("token", response.data.accessToken);
-      return { user: response.data.user }; // Возвращаем объект с пользователем
+      const userCredential = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+      // Сохраняем в localStorage информацию о пользователе
+      localStorage.setItem("token", await user.getIdToken());
+      return { user }; // Возвращаем данные пользователя
     } catch (e) {
-      return rejectWithValue(e.response?.data?.message || "Ошибка регистрации");
+      return rejectWithValue(e.message || "Ошибка регистрации");
     }
   },
 );
 
+// Логин пользователя с использованием Firebase
+export const login = createAsyncThunk(
+  "auth/loginUser",
+  async ({ email, password }, { rejectWithValue }) => {
+    try {
+      const userCredential = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+      // Сохраняем в localStorage информацию о пользователе
+      localStorage.setItem("token", await user.getIdToken());
+      return { user }; // Возвращаем данные пользователя
+    } catch (e) {
+      return rejectWithValue(e.message || "Ошибка авторизации");
+    }
+  },
+);
+
+// Выход из аккаунта
 export const logout = createAsyncThunk(
   "auth/logoutUser",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await AuthService.logout();
+      await firebase.auth().signOut();
       localStorage.removeItem("token");
-      return response.data; // Верните данные, если требуется
+      localStorage.removeItem("user");
+      return; // Возвращаем пусто, так как нам не нужны дополнительные данные
     } catch (e) {
-      return rejectWithValue(e.response?.data?.message || "Ошибка выхода");
+      return rejectWithValue(e.message || "Ошибка выхода");
     }
   },
 );
@@ -43,8 +55,8 @@ export const logout = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: null,
-    auth: false,
+    user: JSON.parse(localStorage.getItem("user")) || null,
+    auth: !!localStorage.getItem("token"),
     error: null,
   },
   extraReducers: (builder) => {
@@ -56,6 +68,7 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.auth = true;
+        localStorage.setItem("user", JSON.stringify(action.payload.user)); // Сохраняем пользователя в localStorage
       })
       .addCase(login.rejected, (state, action) => {
         state.auth = false;
@@ -68,16 +81,18 @@ const authSlice = createSlice({
       .addCase(registrationUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.auth = true;
+        localStorage.setItem("user", JSON.stringify(action.payload.user)); // Сохраняем пользователя в localStorage
       })
       .addCase(registrationUser.rejected, (state, action) => {
         state.auth = false;
         state.error = action.payload;
       })
       .addCase(logout.fulfilled, (state) => {
-        console.log("Logging out, clearing state...");
         state.user = null;
         state.auth = false;
         state.error = null;
+        localStorage.removeItem("user"); // Удаляем пользователя из localStorage
+        localStorage.removeItem("token"); // Удаляем токен из localStorage
       })
       .addCase(logout.rejected, (state, action) => {
         state.error = action.payload;
